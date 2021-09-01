@@ -17,6 +17,7 @@
 * 3 types of artifacts:
   * The first type of artifacts: **npm base image** (npm dependencies download acceleration) published on **Docker Hub**
   * The first type of artifacts: **mvn base image** (mvn dependencies download acceleration) published on **Docker Hub**
+  * The second type of artifacts: publish the **application as a runnable JAR file** on the **GitHub Packages repository**
 * Heroku
 
 # Agent Instructions
