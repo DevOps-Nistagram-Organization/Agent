@@ -18,6 +18,7 @@
   * The first type of artifacts: **npm base image** (npm dependencies download acceleration) published on **Docker Hub**
   * The first type of artifacts: **mvn base image** (mvn dependencies download acceleration) published on **Docker Hub**
   * The second type of artifacts: publish the **application as a runnable JAR file** on the **GitHub Packages repository**
+  * The third type of artifacts: publishing the **application’s Docker image** on **Docker Hub**
 * Heroku
 
 # Agent Instructions
@@ -131,3 +132,4 @@ docker push stevicdule/mvn-base-agent-report:1.0.0-dev
 docker push stevicdule/mvn-base-agent-shop:1.0.0-dev
 ```
 ## The second type of artifacts: publish the application as a runnable JAR file on the GitHub Packages repository
+## The third type of artifacts: publishing the application’s Docker image on Docker Hub
