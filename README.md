@@ -130,3 +130,4 @@ docker push stevicdule/mvn-base-agent-report:1.0.0-dev
 ```shell
 docker push stevicdule/mvn-base-agent-shop:1.0.0-dev
 ```
+## The second type of artifacts: publish the application as a runnable JAR file on the GitHub Packages repository
