@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-
-@FeignClient(url = "http://localhost:8080/agent-product-service/api/product", name = "ProductClient")
+// app.product.url from application.properties
+@FeignClient(name = "product", url = "${app.product.url}")
 public interface ProductClient {
     @GetMapping("{id}")
     ProductDTO getProduct(@PathVariable("id") Long productId);

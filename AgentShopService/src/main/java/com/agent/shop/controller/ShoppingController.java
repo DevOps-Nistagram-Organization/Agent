@@ -12,10 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @RestController
-@RequestMapping("api/shop")
 public class ShoppingController {
 
     private final PurchaseService purchaseService;
@@ -24,16 +26,21 @@ public class ShoppingController {
         this.purchaseService = purchaseService;
     }
 
+    @GetMapping(value = "hello")
+    public ResponseEntity<?> get() throws UnknownHostException {
+        String ip = InetAddress.getLocalHost().getHostAddress();
+        return new ResponseEntity<>(String.format("Hello from shop service with ip address %s!", ip), HttpStatus.OK);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PurchaseResponse> buy(@RequestBody PurchaseRequest purchaseRequest) throws Exception {
         Purchase purchase = purchaseService.buy(purchaseRequest);
         return new ResponseEntity<>(new PurchaseResponse("Success", "200"), HttpStatus.OK);
     }
 
-    @GetMapping(value = "report", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ReportResponseDTO> report() {
-        ReportResponseDTO reportResponseDTO = purchaseService.report();
-        return new ResponseEntity<>(reportResponseDTO, HttpStatus.OK);
+    @GetMapping(value = "purchases", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Purchase>> getPurchases() throws Exception {
+        List<Purchase> purchase = purchaseService.getPurchases();
+        return new ResponseEntity<>(purchase, HttpStatus.OK);
     }
-
 }
